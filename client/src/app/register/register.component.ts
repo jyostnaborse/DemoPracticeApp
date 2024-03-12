@@ -2,6 +2,7 @@ import { HttpBackend, HttpClient } from '@angular/common/http';
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { AccountService } from '../_services/account.service';
 import { ThisReceiver } from '@angular/compiler';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-register',
@@ -14,7 +15,7 @@ export class RegisterComponent implements OnInit {
   @Output() cancelRegister = new EventEmitter();
 
   
-  constructor(private accountSevice: AccountService) {
+  constructor(private accountSevice: AccountService, private toastr: ToastrService) {
     
     
   }
@@ -24,7 +25,8 @@ export class RegisterComponent implements OnInit {
 
   register(){
     this.accountSevice.register(this.model).subscribe({
-      next: () => this.cancel()
+      next: () => this.cancel(),
+      error: e => this.toastr.error(e.error)
       
     })
   }
