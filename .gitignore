@@ -405,4 +405,3 @@ FodyWeavers.xsd
 # End of https://www.toptal.com/developers/gitignore/api/visualstudio
 API/appsettings.json
 API/appsettings.development.json
-/API/Controllers/AccountController.cs
